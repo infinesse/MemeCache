@@ -22,7 +22,7 @@ class MainFeed extends Component {
     return (
       <View style={{ flex: 1, width: 100 + "%", height: 100 + "%" }}>
         <View style={styles.tempNav}>
-          <Text>Meme Cache</Text>
+          <Text id="circle">Meme Cache</Text>
            
           
         </View>
@@ -32,7 +32,6 @@ class MainFeed extends Component {
 }
 
   }
-
 
 
 const styles = StyleSheet.create({

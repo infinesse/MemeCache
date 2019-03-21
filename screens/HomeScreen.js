@@ -7,17 +7,18 @@ import MainFeed from './MainFeed.js';
 import Login from './Login';
 import Camera from './Camera';
 import Profile from './Profile';
-import { createAppContainer, createSwitchNavigator, createTabNavigator, TabNavigator } from 'react-navigation'; 
+import { createAppContainer, createSwitchNavigator, createBottomTabNavigator, TabNavigator } from 'react-navigation'; 
 
-// const Tabs = createTabNavigator({
-//   feed: MainStack,
-//   camera: Camera, 
-//   profile: Profile
-// });
+const Tabs = createBottomTabNavigator({
+  feed: MainFeed,
+  camera: Camera, 
+  profile: Profile
+});
+const AppContainer2 = createAppContainer(Tabs);
 
 const MainStack = createSwitchNavigator({
   login: Login,
-  main: MainFeed
+  main: AppContainer2
  
 });
 
