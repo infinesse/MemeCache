@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'react-native'
+import React, { Component } from 'react';
+import config from '../config';
+import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'react-native';
 
 class Register extends Component {
 
@@ -7,7 +8,7 @@ class Register extends Component {
         super()
         this.state = {
             credentials: {
-                login: "",
+                email: "",
                 password: ""
             }
         };
@@ -21,11 +22,27 @@ class Register extends Component {
     }
 
     register(){
-        //send credentials to server
-        //if signup success
-        alert(JSON.stringify(this.state.credentials));
-            // this.props.navigation.navigate('main');
-        //else error message
+        
+        fetch(config.baseUrl + 'signup', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state.credentials)
+        })
+        .then((response) => response.json())
+        .then(jsonResponse =>{ 
+            if(jsonResponse.confirmation==="success"){
+                this.props.navigation.navigate('main')
+            }else{
+                throw new Error({message: 'Sorry, something went wrong; please try again.'});
+            }
+        })
+        .catch(err => {
+            
+            console.log(err.message);
+        });
     }  
     render(){
         return (
@@ -41,8 +58,19 @@ class Register extends Component {
                     
                     >
             <Text>Register</Text>
-            <TextInput autoCorrect={false} value={this.state.login} onChangeText={text => this.updateText(text, 'login')} placeholder="Username" style={styles.input}/>
-            <TextInput autoCorrect={false} value={this.state.password} onChangeText={text => this.updateText(text, 'password')} secureTextEntry placeholder="Password" style={styles.input}/>
+            <TextInput 
+            autoCorrect={false} 
+            value={this.state.email} 
+            onChangeText={text => this.updateText(text, 'email')} 
+            placeholder="Email" 
+            style={styles.input}/>
+            <TextInput 
+            autoCorrect={false} 
+            value={this.state.password} 
+            onChangeText={text => this.updateText(text, 'password')} 
+            secureTextEntry 
+            placeholder="Password" 
+            style={styles.input}/>
             <Button 
                 onPress={()=>{this.register();}} title="Signup" />
             </View>
