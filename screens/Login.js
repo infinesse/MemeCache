@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native'
 
 class Login extends Component {
     login(){
-        this.props.navigation.navigate('main');
+        this.props.navigation.navigate('register');
     }
     render(){
         return (

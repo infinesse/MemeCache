@@ -20,6 +20,7 @@ const AppContainer2 = createAppContainer(Tabs);
 const IntroStack = createStackNavigator({
   login: Login,
   register: Register
+  
 });
 
 const MainStack = createSwitchNavigator({
