@@ -17,7 +17,7 @@ class Camera extends Component {
                     onPress={()=>{
                         this.login();}}
                     >
-            <Text>LOGIN PAGE</Text></TouchableOpacity>
+            <Text>Camera.js</Text></TouchableOpacity>
         );
     }
 } 

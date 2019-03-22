@@ -7,7 +7,8 @@ import MainFeed from './MainFeed.js';
 import Login from './Login';
 import Camera from './Camera';
 import Profile from './Profile';
-import { createAppContainer, createSwitchNavigator, createBottomTabNavigator, TabNavigator } from 'react-navigation'; 
+import Register from './Register';
+import { createAppContainer, createSwitchNavigator, createBottomTabNavigator, createStackNavigator } from 'react-navigation'; 
 
 const Tabs = createBottomTabNavigator({
   feed: MainFeed,
@@ -16,11 +17,18 @@ const Tabs = createBottomTabNavigator({
 });
 const AppContainer2 = createAppContainer(Tabs);
 
-const MainStack = createSwitchNavigator({
+const IntroStack = createStackNavigator({
   login: Login,
+  register: Register
+});
+
+const MainStack = createSwitchNavigator({
+  intro: IntroStack,
   main: AppContainer2
  
 });
+
+
 
 const AppContainer = createAppContainer(MainStack);
  

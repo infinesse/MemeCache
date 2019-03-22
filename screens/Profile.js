@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 class Profile extends Component {
     login(){
-        this.props.navigation.navigate('profile');
+        this.props.navigation.navigate('feed');
     }
     render(){
         return (
@@ -17,7 +17,7 @@ class Profile extends Component {
                     onPress={()=>{
                         this.login();}}
                     >
-            <Text>LOGIN PAGE</Text></TouchableOpacity>
+            <Text>Profile.js</Text></TouchableOpacity>
         );
     }
 } 

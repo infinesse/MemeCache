@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native'
 
-class Login extends Component {
-    login(){
+class Register extends Component {
+    register(){
         this.props.navigation.navigate('main');
     }
     render(){
@@ -15,10 +15,10 @@ class Login extends Component {
                     justifyContent: "center",
                     alignItems: "center" }}
                     onPress={()=>{
-                        this.login();}}
+                        this.register();}}
                     >
-            <Text>New User?</Text></TouchableOpacity>
+            <Text>Register</Text></TouchableOpacity>
         );
     }
 } 
-export default Login;
+export default Register;
