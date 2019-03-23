@@ -22,28 +22,46 @@ class Register extends Component {
     }
 
     register(){
-        
-        fetch(config.baseUrl + 'signup', {
+        //logs the url of the back end
+        console.log(config.baseURL);
+
+        //alerts input of form & packages it into json
+        console.log(JSON.stringify(this.state.credentials));
+
+        //returns the result of fetching the baseUrl+signup, in the form of json with a string of the data returned in the body of the json
+        return fetch(config.baseUrl + 'signup', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-            },
+            }, 
             body: JSON.stringify(this.state.credentials)
         })
-        .then((response) => response.json())
-        .then(jsonResponse =>{ 
-            if(jsonResponse.confirmation==="success"){
-                this.props.navigation.navigate('main')
-            }else{
-                throw new Error({message: 'Sorry, something went wrong; please try again.'});
-            }
+
+        //then the response data is console logged in string form, but this isn't actually happening because the server isn't being reached.
+        .then(data => {
+            console.log(JSON.stringify(data));
         })
+
+        //here the network request failed error is caught and logged, preventing error banner in app
         .catch(err => {
-            
             console.log(err.message);
         });
+
+        // .then((response) => response.json())
+        // .then(jsonResponse =>{ 
+        //     if(jsonResponse.confirmation==="success"){
+        //         this.props.navigation.navigate('main')
+        //     }else{
+        //         throw new Error({message: 'Sorry, something went wrong; please try again.'});
+        //     }
+        // })
+        // .catch(err => {           
+        //     console.log(err.message);
+        // });
     }  
+
+
     render(){
         return (
             <View 
@@ -57,7 +75,7 @@ class Register extends Component {
                 }} 
                     
                     >
-            <Text>Register</Text>
+            {/* <Text>Register</Text> */}
             <TextInput 
             autoCorrect={false} 
             value={this.state.email} 
@@ -72,7 +90,11 @@ class Register extends Component {
             placeholder="Password" 
             style={styles.input}/>
             <Button 
-                onPress={()=>{this.register();}} title="Signup" />
+                onPress={() => {
+                    this.register();
+                }}  
+                title="Signup" 
+            />
             </View>
         );
     }
