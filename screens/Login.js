@@ -69,12 +69,14 @@ console.log(JSON.stringify(credentials));
                     >
             {/* <Text>Register</Text> */}
             <TextInput 
+            autoCapitalize="none"
             autoCorrect={false} 
             value={this.state.email} 
             onChangeText={text => this.updateText(text, 'email')} 
             placeholder="Email" 
             style={styles.input}/>
-            <TextInput 
+            <TextInput
+            autoCapitalize="none" 
             autoCorrect={false} 
             value={this.state.password} 
             onChangeText={text => this.updateText(text, 'password')} 
