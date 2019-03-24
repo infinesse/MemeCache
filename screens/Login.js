@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'react-native'
-
+import config from '../config';
 class Login extends Component {
     constructor(){
         super()
@@ -20,9 +20,10 @@ class Login extends Component {
     }
 
     login(){
+        let credentials = this.state.credentials.email = this.state.credentials.email.toLowerCase();
         //logs the url of the back end
         // console.log(config.baseUrl + '/api/signup');
-
+console.log(JSON.stringify(credentials));
         //alerts input of form & packages it into json
         // console.log(JSON.stringify(this.state.credentials));
        
@@ -36,15 +37,6 @@ class Login extends Component {
             body: JSON.stringify(this.state.credentials)
         })
 
-        //then the response data is console logged in string form, but this isn't actually happening because the server isn't being reached.
-        // .then(data => {
-        //     console.log(JSON.stringify(data));
-        // })
-
-        // //here the network request failed error is caught and logged, preventing error banner in app
-        // .catch(err => {
-        //     console.log(err.message);
-        // });
 
         .then(response => response.json())
         .then(jsonResponse =>{ 
@@ -53,11 +45,11 @@ class Login extends Component {
                 //this nav line isn;t nav-ing
                 this.props.navigation.navigate('main')
             }else{
-                throw new Error({message: 'Sorry, something went wrong; please try again.'});
+                throw new Error("Sorry, something went wrong; please try again.");
             }
         })
         .catch(err => {           
-            console.log(err.message);
+            alert(JSON.stringify(err.message));
         });
     }  
 
