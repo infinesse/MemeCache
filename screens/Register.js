@@ -23,10 +23,10 @@ class Register extends Component {
 
     register(){
         //logs the url of the back end
-        console.log(config.baseUrl + '/api/signup');
+        // console.log(config.baseUrl + '/api/signup');
 
         //alerts input of form & packages it into json
-        console.log(JSON.stringify(this.state.credentials));
+        // console.log(JSON.stringify(this.state.credentials));
        
         //returns the result of fetching the baseUrl+signup, in the form of json with a string of the data returned in the body of the json
         fetch(config.baseUrl + '/api/signup', {
@@ -52,6 +52,7 @@ class Register extends Component {
         .then(jsonResponse =>{ 
             console.log(JSON.stringify(jsonResponse));
             if(jsonResponse.confirmation==="success"){
+                //this nav line isn;t nav-ing
                 this.props.navigation.navigate('main')
             }else{
                 throw new Error({message: 'Sorry, something went wrong; please try again.'});

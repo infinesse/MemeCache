@@ -22,7 +22,7 @@ const IntroStack = createStackNavigator({
   register: Register
   
 });
-
+const AppContainer = createAppContainer(MainStack);
 const MainStack = createSwitchNavigator({
   intro: IntroStack,
   main: AppContainer2
@@ -31,7 +31,7 @@ const MainStack = createSwitchNavigator({
 
 
 
-const AppContainer = createAppContainer(MainStack);
+
  
 class HomeScreen extends Component {
 
