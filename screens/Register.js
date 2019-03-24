@@ -39,26 +39,27 @@ class Register extends Component {
         })
 
         //then the response data is console logged in string form, but this isn't actually happening because the server isn't being reached.
-        .then(data => {
-            console.log(JSON.stringify(data));
-        })
-
-        //here the network request failed error is caught and logged, preventing error banner in app
-        .catch(err => {
-            console.log(err.message);
-        });
-
-        // .then((response) => response.json())
-        // .then(jsonResponse =>{ 
-        //     if(jsonResponse.confirmation==="success"){
-        //         this.props.navigation.navigate('main')
-        //     }else{
-        //         throw new Error({message: 'Sorry, something went wrong; please try again.'});
-        //     }
+        // .then(data => {
+        //     console.log(JSON.stringify(data));
         // })
-        // .catch(err => {           
+
+        // //here the network request failed error is caught and logged, preventing error banner in app
+        // .catch(err => {
         //     console.log(err.message);
         // });
+
+        .then(response => response.json())
+        .then(jsonResponse =>{ 
+            console.log(JSON.stringify(jsonResponse));
+            if(jsonResponse.confirmation==="success"){
+                this.props.navigation.navigate('main')
+            }else{
+                throw new Error({message: 'Sorry, something went wrong; please try again.'});
+            }
+        })
+        .catch(err => {           
+            console.log(err.message);
+        });
     }  
 
 
