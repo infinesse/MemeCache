@@ -23,13 +23,13 @@ class Register extends Component {
 
     register(){
         //logs the url of the back end
-        console.log(config.baseUrl);
+        console.log(config.baseUrl + '/api/signup');
 
         //alerts input of form & packages it into json
         console.log(JSON.stringify(this.state.credentials));
-
+       
         //returns the result of fetching the baseUrl+signup, in the form of json with a string of the data returned in the body of the json
-        fetch(config.baseUrl + 'signup', {
+        fetch(config.baseUrl + '/api/signup', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

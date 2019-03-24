@@ -9,6 +9,6 @@ export default {
         rowHeight: 50
     },
     // baseURL: 'http://memecache-api-ryq7sm.turbo360-vertex.com/api/'
-    baseUrl: '127.0.0.1'
+    baseUrl: 'http://192.168.128.124:3000'
     
 };
